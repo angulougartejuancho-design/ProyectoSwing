@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto_swing.presentacion;
+
 import proyecto_swing.presentacion.CursoPanel;
+import proyecto_swing.presentacion.MatriculaPanel;
+
 /**
  *
  * @author angul
@@ -30,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnEstudiante = new javax.swing.JButton();
         btnCurso = new javax.swing.JButton();
+        btnMatricula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +43,9 @@ public class MainFrame extends javax.swing.JFrame {
         btnCurso.setText("Curso");
         btnCurso.addActionListener(this::btnCursoActionPerformed);
 
+        btnMatricula.setText("Matricula");
+        btnMatricula.addActionListener(this::btnMatriculaActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,11 +53,13 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEstudiante)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(btnCurso))
-                    .addComponent(btnEstudiante))
-                .addContainerGap(210, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMatricula)
+                            .addComponent(btnCurso))))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +68,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnEstudiante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCurso)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMatricula)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,6 +104,24 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCursoActionPerformed
 
+    private void btnMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatriculaActionPerformed
+        // TODO add your handling code here:
+        javax.swing.JFrame ventana
+                = new javax.swing.JFrame("Módulo de Matrícula");
+
+        ventana.setDefaultCloseOperation(
+                javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        ventana.setContentPane(
+                new MatriculaPanel());
+
+        ventana.setSize(1200, 700);
+
+        ventana.setLocationRelativeTo(null);
+
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnMatriculaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -121,5 +150,6 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCurso;
     private javax.swing.JButton btnEstudiante;
+    private javax.swing.JButton btnMatricula;
     // End of variables declaration//GEN-END:variables
 }

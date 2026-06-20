@@ -3,19 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto_swing.repositorio;
+
 import java.util.ArrayList;
 import java.util.List;
 import proyecto_swing.modelo.Curso;
+
 /**
  *
  * @author Daryelin
  */
 public class CursoRepositorio {
-    private final List<Curso> cursos;
 
-    public CursoRepositorio() {
-        cursos = new ArrayList<>();
-    }
+    private static List<Curso> cursos = new ArrayList<>();
 
     public void agregar(Curso curso) {
         cursos.add(curso);
