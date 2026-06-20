@@ -4,17 +4,108 @@
  */
 package proyecto_swing.presentacion;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import proyecto_swing.modelo.Curso;
+import proyecto_swing.modelo.Estudiante;
+import proyecto_swing.modelo.Matricula;
+
+import proyecto_swing.negocio.CursoNegocio;
+import proyecto_swing.negocio.EstudianteNegocio;
+import proyecto_swing.negocio.MatriculaNegocio;
+
 /**
  *
  * @author PC
  */
 public class MatriculaPanel extends javax.swing.JPanel {
 
+    private MatriculaNegocio matriculaNegocio;
+    private EstudianteNegocio estudianteNegocio;
+    private CursoNegocio cursoNegocio;
+
     /**
      * Creates new form MatriculaPanel
      */
     public MatriculaPanel() {
         initComponents();
+        matriculaNegocio = new MatriculaNegocio();
+        estudianteNegocio = new EstudianteNegocio();
+        cursoNegocio = new CursoNegocio();
+
+        cargarCombos();
+        cargarTabla();
+    }
+
+    private void cargarCombos() {
+
+        cmbEstudiante.removeAllItems();
+
+        for (Estudiante e : estudianteNegocio.obtenerTodos()) {
+
+            if (e.isActivo()) {
+
+                cmbEstudiante.addItem(
+                        e.getId()
+                        + " - "
+                        + e.getNombre()
+                );
+            }
+        }
+
+        cmbCurso.removeAllItems();
+
+        for (Curso c : cursoNegocio.obtenerTodos()) {
+
+            if (c.isActivo()) {
+
+                cmbCurso.addItem(
+                        c.getId()
+                        + " - "
+                        + c.getNombre()
+                );
+            }
+        }
+    }
+
+    private void cargarTabla() {
+
+        DefaultTableModel modelo
+                = (DefaultTableModel) tblMatriculas.getModel();
+
+        modelo.setRowCount(0);
+
+        for (Matricula m : matriculaNegocio.obtenerTodas()) {
+
+            modelo.addRow(new Object[]{
+                m.getId(),
+                m.getEstudiante().getNombre(),
+                m.getCurso().getNombre()
+
+            });
+        }
+    }
+
+    private void limpiarCampos() {
+
+        txtId.setText("");
+
+        txtBuscarEstudiante.setText("");
+
+        txtBuscarCurso.setText("");
+
+        if (cmbEstudiante.getItemCount() > 0) {
+
+            cmbEstudiante.setSelectedIndex(0);
+
+        }
+
+        if (cmbCurso.getItemCount() > 0) {
+
+            cmbCurso.setSelectedIndex(0);
+
+        }
     }
 
     /**
@@ -44,7 +135,7 @@ public class MatriculaPanel extends javax.swing.JPanel {
         btnRefrescar = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMatriculas = new javax.swing.JTable();
 
         lblTitulo.setText("Matricula");
 
@@ -63,29 +154,35 @@ public class MatriculaPanel extends javax.swing.JPanel {
         cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnBuscarEstudiante.setText("Buscar Estudiante");
+        btnBuscarEstudiante.addActionListener(this::btnBuscarEstudianteActionPerformed);
 
         btnBuscarCurso.setText("Buscar Curso");
+        btnBuscarCurso.addActionListener(this::btnBuscarCursoActionPerformed);
 
         btnRefrescar.setText("Refrescar");
+        btnRefrescar.addActionListener(this::btnRefrescarActionPerformed);
 
         btnHistorial.setText("Historial");
+        btnHistorial.addActionListener(this::btnHistorialActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMatriculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Estudiante", "Curso"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblMatriculas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,6 +277,171 @@ public class MatriculaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            int id
+                    = Integer.parseInt(
+                            txtId.getText().trim()
+                    );
+
+            int indiceEstudiante
+                    = cmbEstudiante.getSelectedIndex();
+
+            int indiceCurso
+                    = cmbCurso.getSelectedIndex();
+
+            if (indiceEstudiante == -1
+                    || indiceCurso == -1) {
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Debe seleccionar estudiante y curso."
+                );
+
+                return;
+            }
+
+            Estudiante estudiante
+                    = estudianteNegocio.obtenerTodos()
+                            .get(indiceEstudiante);
+
+            Curso curso
+                    = cursoNegocio.obtenerTodos()
+                            .get(indiceCurso);
+
+            Matricula matricula
+                    = new Matricula(
+                            id,
+                            estudiante,
+                            curso
+                    );
+
+            matriculaNegocio.registrar(
+                    matricula
+            );
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Matrícula registrada correctamente."
+            );
+
+            cargarTabla();
+
+            limpiarCampos();
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    ex.getMessage()
+            );
+
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        int fila
+                = tblMatriculas.getSelectedRow();
+
+        if (fila == -1) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Seleccione una matrícula."
+            );
+
+            return;
+        }
+
+        Matricula matricula
+                = matriculaNegocio.obtenerTodas()
+                        .get(fila);
+
+        matriculaNegocio.eliminar(
+                matricula
+        );
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Matrícula eliminada."
+        );
+
+        cargarTabla();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo
+                = (DefaultTableModel) tblMatriculas.getModel();
+
+        modelo.setRowCount(0);
+
+        for (Matricula m
+                : matriculaNegocio.buscarPorEstudiante(
+                        txtBuscarEstudiante.getText()
+                )) {
+
+            modelo.addRow(new Object[]{
+                m.getId(),
+                m.getEstudiante().getNombre(),
+                m.getCurso().getNombre()
+
+            });
+        }
+    }//GEN-LAST:event_btnBuscarEstudianteActionPerformed
+
+    private void btnBuscarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCursoActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo
+                = (DefaultTableModel) tblMatriculas.getModel();
+
+        modelo.setRowCount(0);
+
+        for (Matricula m
+                : matriculaNegocio.buscarPorCurso(
+                        txtBuscarCurso.getText()
+                )) {
+
+            modelo.addRow(new Object[]{
+                m.getId(),
+                m.getEstudiante().getNombre(),
+                m.getCurso().getNombre()
+
+            });
+        }
+    }//GEN-LAST:event_btnBuscarCursoActionPerformed
+
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+        // TODO add your handling code here:
+        cargarCombos();
+
+        cargarTabla();
+    }//GEN-LAST:event_btnRefrescarActionPerformed
+
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        // TODO add your handling code here:
+        StringBuilder historial
+                = new StringBuilder();
+
+        for (String accion
+                : matriculaNegocio.getHistorial()) {
+
+            historial.append(accion)
+                    .append("\n");
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                historial.toString(),
+                "Historial",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }//GEN-LAST:event_btnHistorialActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCurso;
@@ -191,13 +453,13 @@ public class MatriculaPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbCurso;
     private javax.swing.JComboBox<String> cmbEstudiante;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBuscarCurso;
     private javax.swing.JLabel lblBuscarEstudiante;
     private javax.swing.JLabel lblCurso;
     private javax.swing.JLabel lblEstudiante;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTable tblMatriculas;
     private javax.swing.JTextField txtBuscarCurso;
     private javax.swing.JTextField txtBuscarEstudiante;
     private javax.swing.JTextField txtId;
