@@ -14,11 +14,7 @@ import proyecto_swing.modelo.Estudiante;
 
 public class EstudianteRepositorio {
 
-    private final List<Estudiante> estudiantes;
-
-    public EstudianteRepositorio() {
-        estudiantes = new ArrayList<>();
-    }
+    private static final List<Estudiante> estudiantes = new ArrayList<>();
 
     public void agregar(Estudiante estudiante) {
         estudiantes.add(estudiante);
@@ -29,17 +25,20 @@ public class EstudianteRepositorio {
         for (int i = 0; i < estudiantes.size(); i++) {
 
             if (estudiantes.get(i).getId() == estudiante.getId()) {
+
                 estudiantes.set(i, estudiante);
                 return;
+
             }
 
         }
-
     }
 
     public void eliminar(int id) {
 
-        estudiantes.removeIf(e -> e.getId() == id);
+        estudiantes.removeIf(
+                e -> e.getId() == id
+        );
 
     }
 
@@ -54,7 +53,9 @@ public class EstudianteRepositorio {
         for (Estudiante e : estudiantes) {
 
             if (e.getId() == id) {
+
                 return e;
+
             }
 
         }
@@ -68,7 +69,9 @@ public class EstudianteRepositorio {
         for (Estudiante e : estudiantes) {
 
             if (e.getCorreo().equalsIgnoreCase(correo)) {
+
                 return true;
+
             }
 
         }
@@ -77,7 +80,9 @@ public class EstudianteRepositorio {
 
     }
 
-    public boolean existeCorreoEnOtroEstudiante(String correo, int id) {
+    public boolean existeCorreoEnOtroEstudiante(
+            String correo,
+            int id) {
 
         for (Estudiante e : estudiantes) {
 
@@ -91,7 +96,7 @@ public class EstudianteRepositorio {
         }
 
         return false;
+
     }
-    
 
 }
