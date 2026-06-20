@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package proyecto_swing.presentacion;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -10,59 +11,64 @@ import proyecto_swing.excepciones.DatoInvalidoException;
 import proyecto_swing.excepciones.RegistroDuplicadoException;
 import proyecto_swing.modelo.Curso;
 import proyecto_swing.negocio.CursoNegocio;
+
 /**
  *
  * @author Daryelin
  */
 public class CursoPanel extends javax.swing.JPanel {
-private CursoNegocio negocio;
-private DefaultTableModel modelo;
+
+    private CursoNegocio negocio;
+    private DefaultTableModel modelo;
+
     /**
      * Creates new form CursoPanel
      */
     public CursoPanel() {
         initComponents();
-         negocio = new CursoNegocio();
+        negocio = new CursoNegocio();
 
-    modelo = (DefaultTableModel) jTable1.getModel();
+        modelo = (DefaultTableModel) jTable1.getModel();
 
-    cargarTabla(negocio.obtenerTodos());
-    }
-    
-private void cargarTabla(List<Curso> lista) {
-
-    modelo.setRowCount(0);
-
-    for (Curso curso : lista) {
-
-        modelo.addRow(new Object[]{
-            curso.getId(),
-            curso.getCodigo(),
-            curso.getNombre(),
-            curso.getCreditos(),
-            curso.getProfesor(),
-            curso.isActivo()
-        });
-
+        cargarTabla(negocio.obtenerTodos());
     }
 
-}
-private void limpiar() {
+    private void cargarTabla(List<Curso> lista) {
 
-    txtID.setText("");
-    txtCodigo.setText("");
-    txtNombre.setText("");
-    txtCreditos.setText("");
-    txtProfesor.setText("");
+        modelo.setRowCount(0);
 
-    txtBuscarCodigo.setText("");
-    txtBuscarNombre.setText("");
+        for (Curso curso : lista) {
 
-    chkActivo.setSelected(false);
+            modelo.addRow(new Object[]{
+                curso.getId(),
+                curso.getCodigo(),
+                curso.getNombre(),
+                curso.getCreditos(),
+                curso.getProfesor(),
+                curso.isActivo()
+            });
 
-    txtID.requestFocus();
+        }
 
-}
+    }
+
+    private void limpiar() {
+
+        txtID.setText("");
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtCreditos.setText("");
+        txtProfesor.setText("");
+
+        txtBuscarCodigo.setText("");
+        txtBuscarNombre.setText("");
+
+        chkActivo.setSelected(false);
+
+        txtID.requestFocus();
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,10 +126,12 @@ private void limpiar() {
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         btnEliminar.setText("Eliminar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,38 +156,59 @@ private void limpiar() {
         jLabel9.setText("Buscar por Codigo:");
 
         btnBuscarNombre.setText("Buscar");
+        btnBuscarNombre.addActionListener(this::btnBuscarNombreActionPerformed);
 
         btnBuscarCodigo.setText("Buscar");
+        btnBuscarCodigo.addActionListener(this::btnBuscarCodigoActionPerformed);
 
         btnOrdenarCodigo.setText("Ordenar por Código");
+        btnOrdenarCodigo.addActionListener(this::btnOrdenarCodigoActionPerformed);
 
         btnOrdenarNombre.setText("Ordenar por Nombre");
+        btnOrdenarNombre.addActionListener(this::btnOrdenarNombreActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(46, 46, 46)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtBuscarNombre)
+                    .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBuscarNombre)
+                    .addComponent(btnBuscarCodigo))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnOrdenarNombre)
+                    .addComponent(btnOrdenarCodigo))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,25 +231,8 @@ private void limpiar() {
                                         .addGap(36, 36, 36)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                                            .addComponent(txtNombre)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBuscarNombre)
-                            .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnBuscarNombre)
-                            .addComponent(btnBuscarCodigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnOrdenarCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnOrdenarNombre, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(84, 84, 84))
+                                            .addComponent(txtNombre))))))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,42 +287,130 @@ private void limpiar() {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        int fila = jTable1.getSelectedRow();
+
+        if (fila != -1) {
+
+            txtID.setText(modelo.getValueAt(fila, 0).toString());
+            txtCodigo.setText(modelo.getValueAt(fila, 1).toString());
+            txtNombre.setText(modelo.getValueAt(fila, 2).toString());
+            txtCreditos.setText(modelo.getValueAt(fila, 3).toString());
+            txtProfesor.setText(modelo.getValueAt(fila, 4).toString());
+
+            chkActivo.setSelected(
+                    Boolean.parseBoolean(
+                            modelo.getValueAt(fila, 5).toString()
+                    )
+            );
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         try {
 
-    Curso curso = new Curso(
-            Integer.parseInt(txtID.getText()),
-            txtCodigo.getText(),
-            txtNombre.getText(),
-            Integer.parseInt(txtCreditos.getText()),
-            txtProfesor.getText(),
-            chkActivo.isSelected()
-    );
+            Curso curso = new Curso(
+                    Integer.parseInt(txtID.getText()),
+                    txtCodigo.getText(),
+                    txtNombre.getText(),
+                    Integer.parseInt(txtCreditos.getText()),
+                    txtProfesor.getText(),
+                    chkActivo.isSelected()
+            );
 
-    negocio.registrar(curso);
+            negocio.registrar(curso);
 
-    cargarTabla(negocio.obtenerTodos());
+            cargarTabla(negocio.obtenerTodos());
 
-    JOptionPane.showMessageDialog(this,
-            "Curso registrado correctamente.");
+            JOptionPane.showMessageDialog(this,
+                    "Curso registrado correctamente.");
 
-    limpiar();
+            limpiar();
 
-} catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
 
-    JOptionPane.showMessageDialog(this,
-            "El ID y los créditos deben ser numéricos.");
+            JOptionPane.showMessageDialog(this,
+                    "El ID y los créditos deben ser numéricos.");
 
-} catch (DatoInvalidoException | RegistroDuplicadoException e) {
+        } catch (DatoInvalidoException | RegistroDuplicadoException e) {
 
-    JOptionPane.showMessageDialog(this,
-            e.getMessage());
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage());
 
-}
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
+        // TODO add your handling code here:
+        cargarTabla(
+                negocio.buscarPorCodigo(
+                        txtBuscarCodigo.getText()
+                )
+        );
+    }//GEN-LAST:event_btnBuscarCodigoActionPerformed
+
+    private void btnBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNombreActionPerformed
+        // TODO add your handling code here:
+        cargarTabla(
+                negocio.buscarPorNombre(
+                        txtBuscarNombre.getText()
+                )
+        );
+    }//GEN-LAST:event_btnBuscarNombreActionPerformed
+
+    private void btnOrdenarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarNombreActionPerformed
+        // TODO add your handling code here:
+        cargarTabla(
+                negocio.ordenarPorNombre()
+        );
+    }//GEN-LAST:event_btnOrdenarNombreActionPerformed
+
+    private void btnOrdenarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarCodigoActionPerformed
+        // TODO add your handling code here:
+        cargarTabla(
+                negocio.ordenarPorCodigo()
+        );
+    }//GEN-LAST:event_btnOrdenarCodigoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Curso curso = new Curso(
+                    Integer.parseInt(txtID.getText()),
+                    txtCodigo.getText(),
+                    txtNombre.getText(),
+                    Integer.parseInt(txtCreditos.getText()),
+                    txtProfesor.getText(),
+                    chkActivo.isSelected()
+            );
+
+            negocio.editar(curso);
+
+            cargarTabla(negocio.obtenerTodos());
+
+            JOptionPane.showMessageDialog(this,
+                    "Curso editado correctamente.");
+
+            limpiar();
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this,
+                    "El ID y los créditos deben ser numéricos.");
+
+        } catch (DatoInvalidoException | RegistroDuplicadoException e) {
+
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage());
+
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

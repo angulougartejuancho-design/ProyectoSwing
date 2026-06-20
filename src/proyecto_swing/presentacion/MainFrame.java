@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto_swing.presentacion;
-
+import proyecto_swing.presentacion.CursoPanel;
 /**
  *
  * @author angul
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     /**
@@ -29,11 +29,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         btnEstudiante = new javax.swing.JButton();
+        btnCurso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnEstudiante.setText("Estudiante");
         btnEstudiante.addActionListener(this::btnEstudianteActionPerformed);
+
+        btnCurso.setText("Curso");
+        btnCurso.addActionListener(this::btnCursoActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -41,7 +45,11 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
-                .addComponent(btnEstudiante)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnCurso))
+                    .addComponent(btnEstudiante))
                 .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -49,7 +57,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(btnEstudiante)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCurso)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -66,6 +76,22 @@ public class MainFrame extends javax.swing.JFrame {
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnEstudianteActionPerformed
+
+    private void btnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCursoActionPerformed
+        // TODO add your handling code here:
+        javax.swing.JFrame ventana = new javax.swing.JFrame("Módulo de Cursos");
+
+        ventana.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        ventana.setContentPane(new CursoPanel());
+
+        ventana.setSize(1200, 700);
+
+        ventana.setLocationRelativeTo(null);
+
+        ventana.setVisible(true);
+
+    }//GEN-LAST:event_btnCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +119,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCurso;
     private javax.swing.JButton btnEstudiante;
     // End of variables declaration//GEN-END:variables
 }
