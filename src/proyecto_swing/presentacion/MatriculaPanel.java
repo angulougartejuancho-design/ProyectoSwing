@@ -121,8 +121,6 @@ public class MatriculaPanel extends javax.swing.JPanel {
         lblId = new javax.swing.JLabel();
         lblEstudiante = new javax.swing.JLabel();
         lblCurso = new javax.swing.JLabel();
-        lblBuscarEstudiante = new javax.swing.JLabel();
-        lblBuscarCurso = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtBuscarEstudiante = new javax.swing.JTextField();
         txtBuscarCurso = new javax.swing.JTextField();
@@ -137,37 +135,47 @@ public class MatriculaPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMatriculas = new javax.swing.JTable();
 
-        lblTitulo.setText("Matricula");
+        setBackground(new java.awt.Color(224, 223, 183));
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(28, 84, 112));
+        lblTitulo.setText("Datos de matricula");
+
+        lblId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblId.setForeground(new java.awt.Color(28, 84, 112));
         lblId.setText("ID Matricula");
 
+        lblEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEstudiante.setForeground(new java.awt.Color(28, 84, 112));
         lblEstudiante.setText("Estudiante:");
 
+        lblCurso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCurso.setForeground(new java.awt.Color(28, 84, 112));
         lblCurso.setText("Curso:");
-
-        lblBuscarEstudiante.setText("Buscar Estudiante:");
-
-        lblBuscarCurso.setText("Buscar Curso:");
 
         cmbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trash_bin_icon-icons.com_67981.png"))); // NOI18N
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
+        btnBuscarEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         btnBuscarEstudiante.setText("Buscar Estudiante");
         btnBuscarEstudiante.addActionListener(this::btnBuscarEstudianteActionPerformed);
 
+        btnBuscarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         btnBuscarCurso.setText("Buscar Curso");
         btnBuscarCurso.addActionListener(this::btnBuscarCursoActionPerformed);
 
+        btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/-autorenew_90718.png"))); // NOI18N
         btnRefrescar.setText("Refrescar");
         btnRefrescar.addActionListener(this::btnRefrescarActionPerformed);
 
+        btnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/3643772-archive-archives-document-folder-open_113445.png"))); // NOI18N
         btnHistorial.setText("Historial");
         btnHistorial.addActionListener(this::btnHistorialActionPerformed);
 
@@ -190,90 +198,81 @@ public class MatriculaPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(lblTitulo))
+                    .addComponent(lblTitulo)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCurso)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblId)
-                                    .addComponent(lblEstudiante))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblId)
+                                            .addComponent(lblEstudiante)
+                                            .addComponent(lblCurso))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtId)
+                                            .addComponent(cmbEstudiante, 0, 120, Short.MAX_VALUE)
+                                            .addComponent(cmbCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnHistorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(btnGuardar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtId)
-                                    .addComponent(cmbEstudiante, 0, 120, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRefrescar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHistorial))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblBuscarEstudiante)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscarEstudiante))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblBuscarCurso)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscarCurso)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRefrescar)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnBuscarEstudiante)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(txtBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEstudiante)
-                    .addComponent(cmbEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCurso)
-                    .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblId)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEstudiante)
+                            .addComponent(cmbEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCurso)
+                            .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHistorial))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRefrescar)))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnRefrescar)
-                    .addComponent(btnHistorial))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBuscarEstudiante)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscarEstudiante)))
-                .addGap(18, 18, 18)
+                    .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBuscarCurso)
-                    .addComponent(txtBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCurso))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscarEstudiante)
+                    .addComponent(btnBuscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -453,8 +452,6 @@ public class MatriculaPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbCurso;
     private javax.swing.JComboBox<String> cmbEstudiante;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBuscarCurso;
-    private javax.swing.JLabel lblBuscarEstudiante;
     private javax.swing.JLabel lblCurso;
     private javax.swing.JLabel lblEstudiante;
     private javax.swing.JLabel lblId;

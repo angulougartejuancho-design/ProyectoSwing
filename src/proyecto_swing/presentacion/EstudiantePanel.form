@@ -118,7 +118,6 @@
                               <Component id="Editar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel10" min="-2" pref="151" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -126,6 +125,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="Exportar" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jLabel10" min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -232,6 +232,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ID Estudiante:"/>
       </Properties>
     </Component>
@@ -239,6 +242,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
@@ -248,6 +254,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edad"/>
       </Properties>
     </Component>
@@ -255,6 +264,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Carrera"/>
       </Properties>
@@ -264,6 +276,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Correo"/>
       </Properties>
     </Component>
@@ -271,6 +286,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Telefono"/>
       </Properties>
@@ -280,6 +298,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Observaciones"/>
       </Properties>
     </Component>
@@ -288,6 +309,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Genero"/>
       </Properties>
     </Component>
@@ -295,6 +319,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Estado"/>
       </Properties>
@@ -327,6 +354,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbFemenino">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
@@ -338,11 +368,17 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Masculino"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkActivo">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Activo"/>
       </Properties>
     </Component>
@@ -438,6 +474,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/magnifier-1_icon-icons.com_56924.png"/>
         </Property>
@@ -473,6 +515,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/magnifier-1_icon-icons.com_56924.png"/>
         </Property>
@@ -541,6 +589,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="54" red="1c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Datos del Estudiante"/>
       </Properties>

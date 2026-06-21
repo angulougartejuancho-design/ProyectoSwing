@@ -80,40 +80,52 @@ public class EstudiantePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(224, 223, 183));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(28, 84, 112));
         jLabel1.setText("ID Estudiante:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(28, 84, 112));
         jLabel2.setText("Nombre");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(28, 84, 112));
         jLabel3.setText("Edad");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(28, 84, 112));
         jLabel4.setText("Carrera");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(28, 84, 112));
         jLabel5.setText("Correo");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(28, 84, 112));
         jLabel6.setText("Telefono");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(28, 84, 112));
         jLabel7.setText("Observaciones");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(28, 84, 112));
         jLabel8.setText("Genero");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(28, 84, 112));
         jLabel9.setText("Estado");
 
         cmbCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing Sistemas", "Veterinaria", "Admin Empresas", "Educacion", " " }));
 
+        rbFemenino.setBackground(new java.awt.Color(28, 84, 112));
         rbFemenino.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbFemenino.setText("Femenino");
 
         rbMasculino.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rbMasculino.setForeground(new java.awt.Color(28, 84, 112));
         rbMasculino.setText("Masculino");
 
+        chkActivo.setForeground(new java.awt.Color(28, 84, 112));
         chkActivo.setText("Activo");
 
         txtObservaciones.setColumns(20);
@@ -139,6 +151,8 @@ public class EstudiantePanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(28, 84, 112));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         jLabel10.setText("Filtrar por nombre");
 
@@ -147,6 +161,8 @@ public class EstudiantePanel extends javax.swing.JPanel {
         cmbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing Sistemas", "Veterinaria", "Admin Empresas", "Educacion", " " }));
         cmbBuscarPor.addActionListener(this::cmbBuscarPorActionPerformed);
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(28, 84, 112));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         jLabel11.setText("Filtar por carrera");
 
@@ -169,6 +185,7 @@ public class EstudiantePanel extends javax.swing.JPanel {
         btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(28, 84, 112));
         jLabel12.setText("Datos del Estudiante");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -247,13 +264,13 @@ public class EstudiantePanel extends javax.swing.JPanel {
                                 .addComponent(Editar)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnEliminar)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnLimpiar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(Exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel7))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
