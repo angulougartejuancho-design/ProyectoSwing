@@ -163,8 +163,9 @@ public class MainFrame extends javax.swing.JFrame {
         ventana.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         ventana.setContentPane(new EstudiantePanel());
 
-        ventana.setSize(1200, 700); // Tamaño inicial
+        ventana.setSize(850, 620); // Tamaño inicial
         ventana.setLocationRelativeTo(null);
+        ventana.setResizable(false); 
         ventana.setVisible(true);
     }//GEN-LAST:event_btnEstudianteActionPerformed
 
